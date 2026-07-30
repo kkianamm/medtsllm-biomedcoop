@@ -1,0 +1,11 @@
+# Install after the base medtsllm4 requirements. These versions match the
+# working MOMENT integration in medtsllm-moment.
+numpy>=1.25.2,<2.0
+transformers>=4.54.1,<5
+huggingface-hub>=0.24
+momentfm==0.1.4
+accelerate>=0.28
+peft>=0.10
+safetensors>=0.4
+wfdb>=4.1
+toml>=0.10.2
