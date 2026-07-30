@@ -1,0 +1,27 @@
+{
+  "NORM": [
+    "The recording is consistent with a normal electrocardiographic pattern.",
+    "No major diagnostic ECG abnormality is evident.",
+    "The signal morphology is compatible with the normal diagnostic superclass."
+  ],
+  "MI": [
+    "The electrocardiogram contains morphology associated with myocardial infarction.",
+    "The signal shows an infarction-related diagnostic pattern.",
+    "The waveform is compatible with the myocardial infarction superclass."
+  ],
+  "STTC": [
+    "The recording shows ST-segment or T-wave change.",
+    "Repolarization morphology is compatible with an ST/T alteration.",
+    "The waveform belongs to the ST-T change diagnostic superclass."
+  ],
+  "CD": [
+    "The electrocardiogram shows a cardiac conduction disturbance.",
+    "Impulse propagation morphology is compatible with a conduction disorder.",
+    "The signal belongs to the conduction disturbance diagnostic superclass."
+  ],
+  "HYP": [
+    "The recording contains morphology associated with cardiac hypertrophy.",
+    "The waveform is compatible with a hypertrophy-related ECG pattern.",
+    "The signal belongs to the hypertrophy diagnostic superclass."
+  ]
+}
