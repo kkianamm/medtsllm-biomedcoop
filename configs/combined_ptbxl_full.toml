@@ -1,0 +1,102 @@
+DEBUG = false
+task = "classification"
+model = "tri_medtsllm"
+history_len = 512
+pred_len = 512
+
+[data]
+dataset = "PTB-XL"
+mode = "multivariate"
+cols = "all"
+normalize = true
+step = 512
+
+[training]
+epochs = 20
+batch_size = 16
+optimizer = "adam"
+learning_rate = 0.0001
+dropout = 0.1
+loss = "ce"
+eval_metric = "accuracy"
+eval_metric_direction = "max"
+
+[setup]
+seed = 0
+device = "auto"
+dtype = "mixed"
+num_workers = "auto"
+logger = "print"
+
+[datasets.PTB-XL]
+version = "v1"
+
+[models.medtsllm]
+d_model = 32
+d_ff = 128
+n_heads = 8
+num_tokens = 1024
+covariate_mode = "concat"
+embedding_downsample_mode = "linear"
+
+[models.medtsllm.patching]
+patch_len = 32
+stride = 16
+
+[models.medtsllm.prompting]
+input_stats_dim = 0
+input_stats_select = "all"
+dataset = true
+task = true
+clip = true
+input_stats = false
+examples = false
+class_prompts = false
+class_prompts_path = ""
+class_prompts_per_class = 3
+class_prompts_sample = true
+class_codes = [ "NORM", "MI", "STTC", "CD", "HYP",]
+
+[models.medtsllm.biomedcoop]
+enabled = true
+class_prompts_path = ""
+n_prompts = 16
+pool = "mean"
+tau = 2.0
+kdsp_lambda = 1.0
+sccm_lambda = 0.0
+
+[models.medtsllm.llm]
+enabled = true
+llm = "meta-llama/Llama-2-7b-hf"
+load_in_4bit = false
+load_in_8bit = false
+llm_layers = -1
+
+[models.medtsllm.combined]
+q_dim = 512
+q_queries = 32
+q_depth = 4
+q_heads = 8
+dropout = 0.1
+
+[models.medtsllm.combined.moment]
+backend = "moment"
+model_id = "AutonLab/MOMENT-1-base"
+freeze = true
+unfreeze_last_n = 0
+trust_remote_code = true
+allow_local_fallback = false
+local_patch_size = 16
+max_leads = 64
+use_highres_windows = true
+save_frozen_backbone = false
+
+[models.medtsllm.combined.loss]
+med_ce = 0.15
+moment_ce = 0.15
+query_ce = 0.1
+alignment = 0.1
+query_diversity = 0.01
+biomedcoop = 1.0
+alignment_temperature = 0.1
