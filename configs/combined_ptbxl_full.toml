@@ -52,14 +52,14 @@ clip = true
 input_stats = false
 examples = false
 class_prompts = false
-class_prompts_path = ""
+class_prompts_path = "models/biomedcoop_prompts/ptbxl_ecg.json"
 class_prompts_per_class = 3
 class_prompts_sample = true
 class_codes = [ "NORM", "MI", "STTC", "CD", "HYP",]
 
 [models.medtsllm.biomedcoop]
 enabled = true
-class_prompts_path = ""
+class_prompts_path = "models/biomedcoop_prompts/ptbxl_ecg.json"
 n_prompts = 16
 pool = "mean"
 tau = 2.0
